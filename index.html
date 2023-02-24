@@ -7,21 +7,58 @@
     <title>Names generator</title>
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
   </head>
   <body>
     <div class="container">
       <div class="btn-box">
         <div class="btn" id="btn">Generate</div>
       </div>
+      <!-- <div class="input">
+        <p>Przdział roku urodzin</p>
+        Od
+        <input type="text" id="startingAge" placeholder="Domyślnie 1950" />
+        Do
+        <input type="text" id="endingAge" placeholder="Domyślnie 2020" />
+      </div> -->
       <div class="output">
-        <input type="text" id="firstName" disabled placeholder="First name" />
-        <input type="text" id="lastName" disabled placeholder="Last name" />
-        <input
-          type="text"
-          id="dateOfBirth"
-          disabled
-          placeholder="Date of birth"
-        />
+        <div class="first-name" id="firstNameTooltip">
+          <p>First name</p>
+          <input type="text" id="firstName" disabled placeholder="First name" />
+        </div>
+        <div class="last-name" id="lastNameTooltip">
+          <p>Last name</p>
+          <input type="text" id="lastName" disabled placeholder="Last name" />
+        </div>
+        <div class="first-and-last-name" id="firstAndLastNameTooltip">
+          <p>First and last name</p>
+          <input
+            type="text"
+            id="firstAndLastName"
+            disabled
+            placeholder="First and last name"
+          />
+        </div>
+        <div class="pesel" id="peselTooltip">
+          <p>PESEL</p>
+          <input type="text" id="pesel" disabled placeholder="PESEL" />
+        </div>
+        <div class="date-of-birth" id="dateOfBirthTooltip">
+          <p>Date of birth</p>
+          <input
+            type="text"
+            id="dateOfBirth"
+            disabled
+            placeholder="Date of birth"
+          />
+        </div>
+        <div class="id-number" id="idNumberTooltip">
+          <p>ID number</p>
+          <input type="text" id="idNumber" disabled placeholder="ID number" />
+        </div>
       </div>
     </div>
   </body>

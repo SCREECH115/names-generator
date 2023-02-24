@@ -9,6 +9,7 @@
 body {
   background: rgb(30, 30, 30);
   font-family: "Roboto Condensed", sans-serif;
+  user-select: none;
 }
 
 .container {
@@ -43,7 +44,7 @@ body {
 
 .output {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 15px;
 }
 
@@ -54,9 +55,24 @@ body {
   border-radius: 5px;
   color: gray;
   cursor: pointer;
+  font-size: 14px;
   transition: 0.15s ease-in-out all;
 }
 
 .output input:hover {
   color: black;
+}
+
+.output p {
+  color: white;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: 100;
+}
+
+.input {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }

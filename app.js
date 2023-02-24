@@ -2,6 +2,14 @@ const btn = document.getElementById("btn");
 const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
 const dateOfBirth = document.getElementById("dateOfBirth");
+const firstAndLastName = document.getElementById("firstAndLastName");
+const pesel = document.getElementById("pesel");
+const idNumber = document.getElementById("idNumber");
+
+let startingAge = document.getElementById("startingAge");
+let endingAge = document.getElementById("endingAge");
+let elements = document.querySelectorAll("div.output");
+const letters = "abcdefghijklmnopqrstuvwxyz";
 
 const getFirstName = () => {
   return firstNames[Math.floor(Math.random() * firstNames.length)];
@@ -11,25 +19,127 @@ const getLastName = () => {
   return lastNames[Math.floor(Math.random() * lastNames.length)];
 };
 
-const getYear = (min = 1950, max = 2020) => {
-  const year = Math.floor(Math.random() * (max - min) + min);
-  const month = Math.floor(Math.random() * (12 - 1) + 1);
-  const day = Math.floor(Math.random() * (31 - 1) + 1);
+const fiveRandomNumbers = () => {
+  return Math.floor(Math.random() * 90000) + 10000;
+};
+
+const firstIdLetters = () => {
+  let randomLetters = "";
+
+  for (let i = 0; i < 3; i++) {
+    let randomNum = Math.floor(Math.random() * letters.length);
+    let randomDigit = letters[randomNum];
+    randomLetters += randomDigit;
+  }
+
+  return randomLetters.toUpperCase();
+};
+
+const getBirthDate = (min = 1950, max = 2020) => {
+  // convertToNum(startingAge.value, endingAge.value);
+
+  // if (startingAge.value !== "" && endingAge.value !== "") {
+  //   min = startingAge.value;
+  //   max = endingAge.value;
+  // }
+
+  let year = Math.floor(Math.random() * (max - min) + min);
+  let month = Math.floor(Math.random() * (12 - 1) + 1)
+    .toString()
+    .padStart(2, "0");
+  let day = Math.floor(Math.random() * (31 - 1) + 1);
 
   if (month === 2) {
     day = Math.floor(Math.random() * (28 - 1) + 1);
   }
 
+  console.log(min, max);
+
   return `${day}/${month}/${year}`;
 };
 
-btn.addEventListener("click", () => {
-  firstName.setAttribute("value", getFirstName());
-  lastName.setAttribute("value", getLastName());
-  dateOfBirth.setAttribute("value", getYear());
+const copyToClipboard = () => {
+  let element = event.target;
+  let text = element.textContent.trim();
+  navigator.clipboard.writeText(text);
+
+  console.log("Skopiowano:" + text);
+};
+
+elements.forEach((e) => {
+  e.addEventListener("click", copyToClipboard);
 });
 
-const firstNames = (names = [
+firstName.addEventListener("click", copyToClipboard);
+
+const convertToNum = (a, b) => {
+  a = parseInt(a);
+  b = parseInt(b);
+
+  return a, b;
+};
+
+const generateNames = () => {
+  const firstNameOutput = getFirstName();
+  const lastNameOutput = getLastName();
+  const lastPeselDigits = fiveRandomNumbers();
+  const birthDate = getBirthDate();
+  const idDigits = firstIdLetters();
+
+  const firstDigits = birthDate.replace(/\//g, "");
+  const digitsWithoutYear = firstDigits.replace(/\d{2}(?=\d{2}$)/, "");
+
+  firstName.setAttribute("value", firstNameOutput);
+  lastName.setAttribute("value", lastNameOutput);
+  dateOfBirth.setAttribute("value", birthDate);
+  pesel.setAttribute("value", digitsWithoutYear + lastPeselDigits);
+  firstAndLastName.setAttribute(
+    "value",
+    firstNameOutput + " " + lastNameOutput
+  );
+  idNumber.setAttribute("value", idDigits + fiveRandomNumbers());
+
+  console.log(firstName.value, lastName.value, dateOfBirth.value);
+};
+
+btn.addEventListener("click", generateNames);
+
+window.onload = () => {
+  generateNames();
+};
+
+tippy("#firstNameTooltip", {
+  content: "Copy first name!",
+  placement: "bottom",
+  arrow: true,
+});
+tippy("#lastNameTooltip", {
+  content: "Copy last name!",
+  placement: "bottom",
+  arrow: true,
+});
+tippy("#firstAndLastNameTooltip", {
+  content: "Copy first and last name!",
+  placement: "bottom",
+  arrow: true,
+});
+tippy("#peselTooltip", {
+  content: "Copy PESEL!",
+  placement: "bottom",
+  arrow: true,
+});
+tippy("#dateOfBirthTooltip", {
+  content: "Copy date of birth!",
+  placement: "bottom",
+  arrow: true,
+});
+tippy("#idNumberTooltip", {
+  content: "Copy ID number!",
+  placement: "bottom",
+  arrow: true,
+});
+
+const firstNames = [
   "Aaran",
   "Aaren",
   "Aarez",
@@ -2768,7 +2878,8 @@ const firstNames = (names = [
   "Zubair",
   "Zubayr",
   "Zuriel",
-]);
+];
+
 const lastNames = [
   "Abbott",
   "Acevedo",
