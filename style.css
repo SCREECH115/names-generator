@@ -10,6 +10,7 @@ body {
   background: rgb(30, 30, 30);
   font-family: "Roboto Condensed", sans-serif;
   user-select: none;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -17,7 +18,12 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 40vh;
+  /* background-color: #303030; */
+  border-radius: 10px;
+  padding: 50px 0;
+  height: 100vh;
+  /* margin-top: 50px; */
+  /* width: 1300px; */
 }
 
 .btn {
@@ -34,18 +40,22 @@ body {
 }
 
 .btn:hover {
-  background-color: black;
+  background-color: rgb(30, 30, 30);
   color: white;
 }
 
 .btn-box {
-  margin: 20px;
+  margin-bottom: 50px;
 }
 
 .output {
   display: flex;
-  flex-direction: row;
-  gap: 15px;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.output p {
+  margin-top: 10px;
 }
 
 .output input {
@@ -53,9 +63,12 @@ body {
   background-color: white;
   color: black;
   border-radius: 5px;
+  border: none;
+  outline: none;
   color: gray;
   cursor: pointer;
   font-size: 14px;
+  width: 300px;
   transition: 0.15s ease-in-out all;
 }
 
@@ -75,4 +88,59 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+}
+
+hr {
+  margin: 0 30px;
+  border-radius: 30%;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.up-table {
+  display: flex;
+}
+
+.down-table {
+  display: flex;
+}
+
+.window {
+  transition: 0.3s ease-in-out all;
+}
+
+.window:hover {
+  transform: translateY(-3px);
+}
+
+.window:active {
+  transform: translateY(3px);
+}
+
+@media screen and (max-width: 1100px) {
+  .up-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .down-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .title {
+    padding-top: 30px;
+  }
+
+  hr {
+    display: none;
+  }
 }

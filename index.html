@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Names generator</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="app.js" defer></script>
+    <script src="app.js" type="module" defer></script>
+    <script src="tipply.js" defer></script>
+    <link rel="stylesheet" href="path/to/style.css"></link>
+    <script src="path/to/index.var.js" defer></script>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -15,7 +18,7 @@
   <body>
     <div class="container">
       <div class="btn-box">
-        <div class="btn" id="btn">Generate</div>
+        <div class="btn window" id="btn">Generate</div>
       </div>
       <!-- <div class="input">
         <p>Przdział roku urodzin</p>
@@ -25,39 +28,183 @@
         <input type="text" id="endingAge" placeholder="Domyślnie 2020" />
       </div> -->
       <div class="output">
-        <div class="first-name" id="firstNameTooltip">
-          <p>First name</p>
-          <input type="text" id="firstName" disabled placeholder="First name" />
+        <div class="up-table">
+          <div class="names">
+            <p class="title">Names</p>
+            <div class="first-name window" id="firstNameTooltip">
+              <p>First name</p>
+              <input
+                type="text"
+                id="firstName"
+                disabled
+                placeholder="First name"
+              />
+            </div>
+            <div class="last-name window" id="lastNameTooltip">
+              <p>Last name</p>
+              <input
+                type="text"
+                id="lastName"
+                disabled
+                placeholder="Last name"
+              />
+            </div>
+            <div
+              class="first-and-last-name window"
+              id="firstAndLastNameTooltip"
+            >
+              <p>First and last name</p>
+              <input
+                type="text"
+                id="firstAndLastName"
+                disabled
+                placeholder="First and last name"
+              />
+            </div>
+          </div>
+          <hr />
+          <div class="births">
+            <p class="title">Births</p>
+            <div class="pesel window" id="peselTooltip">
+              <p>Social Security Number</p>
+              <input
+                type="text"
+                id="pesel"
+                disabled
+                placeholder="Social Security Number"
+              />
+            </div>
+            <div class="date-of-birth window" id="dateOfBirthTooltip">
+              <p>Date of birth</p>
+              <input
+                type="text"
+                id="dateOfBirth"
+                disabled
+                placeholder="Date of birth"
+              />
+            </div>
+            <div class="id-number window" id="idNumberTooltip">
+              <p>ID number</p>
+              <input
+                type="text"
+                id="idNumber"
+                disabled
+                placeholder="ID number"
+              />
+            </div>
+          </div>
+          <hr />
+          <div class="place">
+            <p class="title">Places</p>
+            <div class="code-post window" id="codepostTooltip">
+              <p>Code post</p>
+              <input
+                type="text"
+                id="codepost"
+                disabled
+                placeholder="Code Post"
+              />
+            </div>
+            <div class="town window" id="townTooltip">
+              <p>Town</p>
+              <input type="text" id="town" disabled placeholder="Town" />
+            </div>
+            <div class="street window" id="streetTooltip">
+              <p>Street</p>
+              <input type="text" id="street" disabled placeholder="Street" />
+            </div>
+          </div>
         </div>
-        <div class="last-name" id="lastNameTooltip">
-          <p>Last name</p>
-          <input type="text" id="lastName" disabled placeholder="Last name" />
-        </div>
-        <div class="first-and-last-name" id="firstAndLastNameTooltip">
-          <p>First and last name</p>
-          <input
-            type="text"
-            id="firstAndLastName"
-            disabled
-            placeholder="First and last name"
-          />
-        </div>
-        <div class="pesel" id="peselTooltip">
-          <p>PESEL</p>
-          <input type="text" id="pesel" disabled placeholder="PESEL" />
-        </div>
-        <div class="date-of-birth" id="dateOfBirthTooltip">
-          <p>Date of birth</p>
-          <input
-            type="text"
-            id="dateOfBirth"
-            disabled
-            placeholder="Date of birth"
-          />
-        </div>
-        <div class="id-number" id="idNumberTooltip">
-          <p>ID number</p>
-          <input type="text" id="idNumber" disabled placeholder="ID number" />
+
+        <hr />
+
+        <div class="down-table">
+          <div class="business">
+            <p class="title">Business</p>
+            <div class="nip window" id="nipTooltip">
+              <p>Employer Identification Number</p>
+              <input type="text" id="nip" disabled placeholder="EIN" />
+            </div>
+            <div class="regon window" id="regonTooltip">
+              <p>Employer ID Number</p>
+              <input
+                type="text"
+                id="regon"
+                disabled
+                placeholder="Employer ID Numbers"
+              />
+            </div>
+            <div class="company-name window" id="companyNameTooltip">
+              <p>Company name</p>
+              <input
+                type="text"
+                id="companyName"
+                disabled
+                placeholder="Company name"
+              />
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="cards">
+            <p class="title">MONEY</p>
+            <div class="card-number window" id="cardNumberTooltip">
+              <p>Card Number</p>
+              <input
+                type="text"
+                id="cardNumber"
+                disabled
+                placeholder="Card number"
+              />
+            </div>
+            <div class="bank-name window" id="bankNameTooltip">
+              <p>Bank name</p>
+              <input
+                type="text"
+                id="bankName"
+                disabled
+                placeholder="Bank name"
+              />
+            </div>
+            <div class="bank-number window" id="bankNumberTooltip">
+              <p>Bank number</p>
+              <input
+                type="text"
+                id="bankNumber"
+                disabled
+                placeholder="Bank number"
+              />
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="cars">
+            <p class="title">Car</p>
+            <div class="brand window" id="brandTooltip">
+              <p>Brand</p>
+              <input
+                type="text"
+                id="carBrand"
+                disabled
+                placeholder="Auto brand"
+              />
+            </div>
+            <div class="car-number window" id="carNumberTooltip">
+              <p>Registration numbers</p>
+              <input
+                type="text"
+                id="carNumber"
+                disabled
+                placeholder="Car registration numbers"
+              />
+            </div>
+            <div class="car-vin window" id="carVinTooltip">
+              <p>VIN</p>
+              <input type="text" id="vin" disabled placeholder="VIN" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
